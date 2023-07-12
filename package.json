@@ -1,0 +1,20 @@
+{
+  "name": "nextjs-strapi-page-manager",
+  "version": "1.0.0",
+  "description": "Handle the pages and blocks for appsforyou - strapi basic website CMS.",
+  "scripts": {
+    "build": "rollup -c"
+  },
+  "main": "index.js",
+  "author": "Divergent",
+  "license": "MIT",
+  "dependencies": {
+    "typescript": "^5.1.6"
+  },
+  "devDependencies": {
+    "@rollup/plugin-typescript": "^11.1.2",
+    "@types/node": "^20.4.1",
+    "rollup": "^3.26.2",
+    "tslib": "^2.6.0"
+  }
+}
