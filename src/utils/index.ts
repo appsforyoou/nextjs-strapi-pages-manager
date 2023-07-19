@@ -1,3 +1,5 @@
+import qs from 'qs';
+
 export function getStrapiURL(path: string) {
     return `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:1337"}${path}`;
 }
@@ -23,13 +25,6 @@ export function redirectToHomepage() {
     };
 }
 
-// This function will build the url to fetch on the Strapi API
-export function getData(slug: string, locale: string) {
-    const slugToReturn = `/${slug}?lang=${locale}`;
-    const apiUrl = `/pages?slug=${slug}&_locale=${locale}`;
-
-    return {
-        data: getStrapiURL(apiUrl),
-        slug: slugToReturn,
-    };
+export function buildStrapiQuery(data: { [key: string]: any }) {
+    return qs.stringify(data, { encodeValuesOnly: true });
 }
