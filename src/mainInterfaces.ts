@@ -26,6 +26,7 @@ interface PageSection {
     page?: IPageData;
     blocks: (IHero | IService)[];
     sectionType: SectionTypes;
+    positionIndex: number;
 }
 
 //strapi media interface
@@ -59,5 +60,7 @@ interface IPageData {
 
 export {
     IPageData,
-    StrapiMedia
+    StrapiMedia,
+    PageSection,
+    SectionTypes,
 }

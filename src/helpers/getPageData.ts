@@ -4,7 +4,7 @@ import { parseStrapiBlocksData } from './parseStrapiBlocksData';
 import parseDataFromStrapiAttributes from './parseDataFromAttributes';
 import { buildStrapiQuery } from '../utils';
 import populateBlocksObj from '../utils/blocksPopulateObj';
-import { IPageData } from '../mainInterfaces';
+import { IPageData, PageSection } from '../mainInterfaces';
 
 export default async function getPageData(slug: string, locale: string) {
     const slugToReturn = `/${slug}?lang=${locale}`;
@@ -45,9 +45,6 @@ export default async function getPageData(slug: string, locale: string) {
         throw new Error(`[Error in getPageData]: No data returned for slug ${slug}`)
     }
 
-    // console.log(data[0].attributes.page_sections.data[1].attributes.blocks)
-    // console.log(data[0].attributes.page_sections.data[1].attributes.blocks[0].buttons)
-
     let parsedPageData = parseDataFromStrapiAttributes(delve(data, '0'));
 
     parsedPageData.page_sections = parsedPageData.page_sections.data.map((section: any) => {
@@ -57,7 +54,9 @@ export default async function getPageData(slug: string, locale: string) {
             ...parsedSection,
             blocks: parsedSection.blocks.map(parseStrapiBlocksData)
         }
-    })
+    }).sort((a: PageSection, b: PageSection) => a.positionIndex - b.positionIndex) 
+
+
 
     return {
         data: parsedPageData as IPageData,
