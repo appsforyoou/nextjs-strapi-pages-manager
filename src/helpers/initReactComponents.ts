@@ -1,8 +1,8 @@
-import { ReactNode } from 'react';
+import { JSX } from "react";
 
 interface RComp {
     blockName: string;
-    component: ReactNode;
+    component: (props: any) => JSX.Element;
 }
 
 let components: RComp[] = [];
@@ -18,5 +18,5 @@ export const initReactComponents = (reactComponentsArray: RComp[]) => {
 
 export const getReactComponent = (blockName: string) => {
     const component = components.find(component => component.blockName === blockName);
-    return component ? component.component : null;
+    return ((typeof component === 'object') ? component.component : null);
 }
