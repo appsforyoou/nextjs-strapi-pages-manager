@@ -1,12 +1,17 @@
 import React from 'react';
 import { getReactComponent } from './initReactComponents';
 import { PageSection, SectionTypes } from '../mainInterfaces';
+import { Suspense } from 'react';
 
+function getBlockComponent(
+    { __component, ...rest }: { __component: string } & { [key: string]: any },
+    index: number) {
+    const Block = getReactComponent(__component);
 
-function getBlockComponent(block: any) {
-    const { __component, ...rest } = block;
-    const test = getReactComponent(__component)
-    return test;
+    return Block ?
+        <Suspense fallback={<p>Loading...</p>}>
+            <Block key={`index-${index}`} {...rest} />
+        </Suspense> : null
 }
 
 function BlockManager({ blocks }: any) {
