@@ -12,7 +12,11 @@ export default async function getPageData(slug: string, locale: string) {
     const query = buildStrapiQuery({
         filters: {
             slug: {
-                $eq: slug
+                ...(slug ? {
+                    $eq: slug
+                } : {
+                    $null: true
+                })
             },
         },
         populate: [
