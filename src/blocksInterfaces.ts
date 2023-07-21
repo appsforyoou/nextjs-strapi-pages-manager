@@ -16,9 +16,7 @@ interface IHero extends BlockInterface {
     theme: number;
 }
 
-interface IService extends BlockInterface {
-    data: ApiDataComponent;
-}
+type IService = BlockInterface & ApiDataComponent
 
 export {
     IHero,
