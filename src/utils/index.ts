@@ -1,7 +1,7 @@
 import qs from 'qs';
-
-export function getStrapiURL(path: string) {
-    return `${process.env.NEXT_PUBLIC_API_URL || "http://localhost:1337"}${path}`;
+import parseStrapiUrl from "./parseStrapiUrl";
+export {
+    parseStrapiUrl
 }
 
 // This function will get the url of your medias depending on where they are hosted
