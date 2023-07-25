@@ -1,11 +1,5 @@
 import { IHero, IService } from './blocksInterfaces';
 
-enum SectionTypes {
-    header = 'header',
-    footer = 'footer',
-    section = 'section',
-}
-
 interface MetaComponent {
     name: string;
     content: string;
@@ -25,7 +19,6 @@ interface PageSection {
     htmlId: string;
     page?: IPageData;
     blocks: (IHero | IService)[];
-    sectionType: SectionTypes;
     positionIndex: number;
 }
 
@@ -62,5 +55,4 @@ export {
     IPageData,
     StrapiMedia,
     PageSection,
-    SectionTypes,
 }
