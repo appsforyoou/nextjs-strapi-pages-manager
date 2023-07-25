@@ -23,8 +23,6 @@ function getSection(section: PageSection) {
     const { htmlId, blocks } = section;
 
     const SectionComponent = getReactSection(htmlId);
-
-    console.log(SectionComponent)
     return SectionComponent ? (
         <>
             {/* @ts-expect-error Server Component */}

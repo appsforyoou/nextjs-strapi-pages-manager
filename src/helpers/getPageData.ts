@@ -8,7 +8,6 @@ import { IPageData, PageSection } from '../mainInterfaces';
 
 export default async function getPageData(slug: string, locale: string) {
     const slugToReturn = `/${slug}?lang=${locale}`;
-    
     const query = buildStrapiQuery({
         filters: {
             slug: {
@@ -23,7 +22,7 @@ export default async function getPageData(slug: string, locale: string) {
             '*',
             'page_sections.*',
             'page_sections.blocks.*',
-            ...populateBlocksObj
+            ...populateBlocksObj()
         ],
         locale
     })

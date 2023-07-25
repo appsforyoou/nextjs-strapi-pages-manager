@@ -1,23 +1,28 @@
-const populate = {
+let populate: { [key: string]: Array<string> } = {
     hero: [
         'page_sections.blocks.buttons.*',
         'page_sections.blocks.buttons.link.*',
         'page_sections.blocks.media.*',
         'page_sections.blocks.title.*',
-        'page_sections.blocks.text.*',
+        'page_sections.blocks.text.*'
     ],
     service: [
         'page_sections.blocks.data.*',
     ]
 }
 
-//create a function to combine all the populate arrays into one
-const populateBlocksObj = () => {
-    const populateBlocksObj = Object.values(populate).reduce((acc: string[], current: string[]) => {
-        return [...acc, ...current];
-    }, [])
-
-    return populateBlocksObj;
+export const pushToPopulateObj = (blockName: string, populateArray: string[]) => {
+    if (populate[blockName]) {
+        populate[blockName] = [...populate[blockName], ...populateArray];
+    } else {
+        populate[blockName] = populateArray;
+    }
 }
 
-export default populateBlocksObj();
+const populateBlocksObj = () => {
+    return Object.values(populate).reduce((acc: string[], current: string[]) => {
+        return [...acc, ...current];
+    }, [])
+}
+
+export default populateBlocksObj;

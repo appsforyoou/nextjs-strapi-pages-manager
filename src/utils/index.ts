@@ -1,7 +1,9 @@
 import qs from 'qs';
 import parseStrapiUrl from "./parseStrapiUrl";
+import { pushToPopulateObj } from "./blocksPopulateObj";
 export {
-    parseStrapiUrl
+    parseStrapiUrl,
+    pushToPopulateObj
 }
 
 // This function will get the url of your medias depending on where they are hosted
