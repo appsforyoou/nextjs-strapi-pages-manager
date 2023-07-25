@@ -5,9 +5,7 @@ export default async function getDataForWebsiteUse(params: any) {
     const { slug, locale } = getLocalizedParams(params);
 
     try {
-        const data = await getPageData(slug, locale);
-
-        return data;
+        return await getPageData(slug, locale);
     } catch (error: any) {
         console.error(error)
         throw new Error(error);

@@ -20,6 +20,9 @@ export default async function getPageData(slug: string, locale: string) {
         },
         populate: [
             '*',
+            'seo.*',
+            'seo.meta.*',
+            'seo.metaImage.*',
             'page_sections.*',
             'page_sections.blocks.*',
             ...populateBlocksObj()

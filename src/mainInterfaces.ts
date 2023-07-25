@@ -6,12 +6,17 @@ interface MetaComponent {
 }
 
 interface SEO {
-    metaTitle?: string;
-    metaDescription?: string;
+    metaTitle: string;
+    metaDescription: string;
     meta?: MetaComponent[];
-    preventIndexing?: boolean;
+    preventIndexing: boolean;
     structuredData?: string;
-    metaImage: StrapiMedia;
+    metaImage?: {
+        data: {
+            id: number;
+            attributes: StrapiMedia;
+        }
+    };
 }
 
 interface PageSection {
