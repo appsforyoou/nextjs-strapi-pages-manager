@@ -1,6 +1,6 @@
 import React from 'react';
-import { getReactComponent } from './initReactComponents';
-import { PageSection, SectionTypes } from '../mainInterfaces';
+import {getReactComponent, getReactSection} from './initReactComponents';
+import { PageSection } from '../mainInterfaces';
 import { Suspense } from 'react';
 
 function getBlockComponent(
@@ -10,6 +10,7 @@ function getBlockComponent(
 
     return Block ?
         <Suspense fallback={<p>Loading...</p>}>
+            {/* @ts-expect-error Server Component */}
             <Block key={`index-${index}`} {...rest} />
         </Suspense> : null
 }
@@ -19,28 +20,19 @@ function BlockManager({ blocks }: any) {
 }
 
 function getSection(section: PageSection) {
-    const { htmlId, blocks, sectionType } = section;
-    return (
+    const { htmlId, blocks } = section;
+
+    const SectionComponent = getReactSection(htmlId);
+
+    console.log(SectionComponent)
+    return SectionComponent ? (
         <>
-            {sectionType === SectionTypes.section ? (
-                <section id={htmlId}>
-                    <BlockManager blocks={blocks} />
-                </section>
-            ) : sectionType === SectionTypes.header ? (
-                <header id={htmlId}>
-                    <BlockManager blocks={blocks} />
-                </header>
-            ) : sectionType === SectionTypes.footer ? (
-                <footer id={htmlId}>
-                    <BlockManager blocks={blocks} />
-                </footer>
-            ) : (
-                <div id={htmlId}>
-                    <BlockManager blocks={blocks} />
-                </div>
-            )}
+            {/* @ts-expect-error Server Component */}
+            <SectionComponent>
+                <BlockManager blocks={blocks} />
+            </SectionComponent>
         </>
-    )
+    ) : null
 }
 
 function SectionManager({ sections }: any) {

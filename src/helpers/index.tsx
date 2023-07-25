@@ -1,9 +1,10 @@
 import getDataForWebsiteUse from './getDataForWebsiteUse';
-import { initReactComponents } from './initReactComponents';
+import { initReactComponents, initReactSections } from './initReactComponents';
 import SectionManager from './blockManager';
 
 export {
     getDataForWebsiteUse,
     initReactComponents,
+    initReactSections,
     SectionManager
 };
