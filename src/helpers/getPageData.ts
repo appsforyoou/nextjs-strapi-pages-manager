@@ -37,6 +37,11 @@ export default async function getPageData(slug: string, locale: string) {
     });
 
     if (!res.ok) {
+        if (res.status === 404) {
+            return {
+                data: null
+            }
+        }
         throw new Error(`[Error in getPageData]: ${res.status} ${res.statusText}`)
     }
 

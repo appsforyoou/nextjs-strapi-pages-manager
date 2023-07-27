@@ -21,6 +21,9 @@ export default async function getMainNavigationLinks(locale: string = 'de') {
     });
 
     if (!res.ok) {
+        if (res.status === 404) {
+            return []
+        }
         throw new Error(`[Error in getMainNavigationLinks]: ${res.status} ${res.statusText}`)
     }
 
