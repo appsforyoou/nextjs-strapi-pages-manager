@@ -4,9 +4,11 @@ import { PageSection } from '../mainInterfaces';
 import { Suspense } from 'react';
 
 function getBlockComponent(
-    { __component, ...rest }: { __component: string } & { [key: string]: any },
-    index: number) {
-    const Block = getReactComponent(__component);
+    { __component, theme, ...rest }: { __component: string, theme?: number } & { [key: string]: any },
+    index: number,
+    sectionId: string
+) {
+    const Block = getReactComponent(__component, sectionId, theme);
 
     return Block ?
         <Suspense fallback={<p>Loading...</p>}>
@@ -15,8 +17,8 @@ function getBlockComponent(
         </Suspense> : null
 }
 
-function BlockManager({ blocks }: any) {
-    return <>{blocks.map(getBlockComponent)}</>;
+function BlockManager({ blocks, sectionId }: any) {
+    return <>{blocks.map((b: any, index: number) => getBlockComponent(b, index, sectionId))}</>;
 }
 
 function getSection(section: PageSection) {
@@ -27,7 +29,7 @@ function getSection(section: PageSection) {
         <>
             {/* @ts-expect-error Server Component */}
             <SectionComponent>
-                <BlockManager blocks={blocks} />
+                <BlockManager blocks={blocks} sectionId={htmlId} />
             </SectionComponent>
         </>
     ) : null
