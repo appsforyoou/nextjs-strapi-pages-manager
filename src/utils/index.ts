@@ -1,9 +1,12 @@
 import qs from 'qs';
 import parseStrapiUrl from "./parseStrapiUrl";
 import { pushToPopulateObj } from "./blocksPopulateObj";
+import checkBlockType from "./checkBlockType";
+
 export {
     parseStrapiUrl,
-    pushToPopulateObj
+    pushToPopulateObj,
+    checkBlockType
 }
 
 // This function will get the url of your medias depending on where they are hosted
@@ -25,6 +28,12 @@ export function redirectToHomepage() {
         permanent: false,
         },
     };
+}
+
+export function parseCustomPopulateObjToArray(populateObj: { [key: string]: Array<string> }) {
+    return Object.values(populateObj).reduce((acc: string[], current: string[]) => {
+        return [...acc, ...current];
+    }, [])
 }
 
 export function buildStrapiQuery(data: { [key: string]: any }) {

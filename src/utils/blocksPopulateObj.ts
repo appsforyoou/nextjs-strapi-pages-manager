@@ -1,3 +1,5 @@
+import {parseCustomPopulateObjToArray} from "./index";
+
 let populate: { [key: string]: Array<string> } = {
     hero: [
         'page_sections.blocks.buttons.*',
@@ -20,9 +22,7 @@ export const pushToPopulateObj = (blockName: string, populateArray: string[]) =>
 }
 
 const populateBlocksObj = () => {
-    return Object.values(populate).reduce((acc: string[], current: string[]) => {
-        return [...acc, ...current];
-    }, [])
+    return parseCustomPopulateObjToArray(populate);
 }
 
 export default populateBlocksObj;

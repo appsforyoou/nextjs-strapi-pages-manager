@@ -1,7 +1,13 @@
-import { ApiDataComponent, ButtonComponent, ParagraphComponent, TitleComponent } from './componentsInterfaces';
+import {
+    ApiDataComponent,
+    ButtonComponent,
+    LinkComponent,
+    ParagraphComponent,
+    TitleComponent
+} from './componentsInterfaces';
 import { StrapiMedia } from './mainInterfaces';
 
-interface BlockInterface {
+export interface BlockInterface {
     id: number;
     __component: string;
 }
@@ -16,9 +22,17 @@ interface IHero extends BlockInterface {
     theme: number;
 }
 
+interface IFooterLinks extends BlockInterface {
+    linksSections: {
+        title: string;
+        links: LinkComponent[];
+    }[]
+}
+
 type IService = BlockInterface & ApiDataComponent
 
 export {
     IHero,
-    IService
+    IService,
+    IFooterLinks
 }

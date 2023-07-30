@@ -41,6 +41,5 @@ export const getReactComponent = (blockName: string, sectionId: string, theme?: 
             return bName === blockName;
         });
 
-    console.log('blockName: ', blockName, 'sectionId: ', sectionId, 'theme: ', theme, 'component: ', component);
     return ((typeof component === 'object') ? component.component : null);
 }

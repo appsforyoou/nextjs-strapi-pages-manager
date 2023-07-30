@@ -1,4 +1,4 @@
-import { IHero, IService } from './blocksInterfaces';
+import {IFooterLinks, IHero, IService} from './blocksInterfaces';
 
 interface MetaComponent {
     name: string;
@@ -56,8 +56,13 @@ interface IPageData {
     page_sections: PageSection[];
 }
 
+interface IFooterData {
+    blocks: Array<IHero | IFooterLinks>
+}
+
 export {
     IPageData,
     StrapiMedia,
     PageSection,
+    IFooterData
 }
