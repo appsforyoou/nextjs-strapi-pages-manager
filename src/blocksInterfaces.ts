@@ -29,7 +29,9 @@ interface IFooterLinks extends BlockInterface {
     }[]
 }
 
-type IService = BlockInterface & ApiDataComponent
+interface IService extends BlockInterface, ApiDataComponent {
+    title: TitleComponent[];
+}
 
 export {
     IHero,
