@@ -10,6 +10,9 @@ let populate: { [key: string]: Array<string> } = {
     ],
     service: [
         'page_sections.blocks.data.*',
+    ],
+    testimonials: [
+        'page_sections.blocks.testimonials',
     ]
 }
 
