@@ -30,22 +30,24 @@ interface PageSection {
 //strapi media interface
 interface StrapiMedia {
     id: number;
-    name: string;
-    alternativeText: string;
-    caption: string | null;
-    width: number;
-    height: number;
-    formats: any;
-    hash: string;
-    ext: string;
-    mime: string;
-    size: number;
-    url: string;
-    previewUrl: string;
-    provider: string;
-    provider_metadata: any;
-    created_at: string;
-    updated_at: string;
+    attributes: {
+        name: string;
+        alternativeText: string;
+        caption: string | null;
+        width: number;
+        height: number;
+        formats: any;
+        hash: string;
+        ext: string;
+        mime: string;
+        size: number;
+        url: string;
+        previewUrl: string;
+        provider: string;
+        provider_metadata: any;
+        created_at: string;
+        updated_at: string;
+    }
 }
 
 interface IPageData {
