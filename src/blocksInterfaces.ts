@@ -2,7 +2,7 @@ import {
     ApiDataComponent,
     ButtonComponent,
     LinkComponent,
-    ParagraphComponent,
+    ParagraphComponent, TestimonialComponent,
     TitleComponent
 } from './componentsInterfaces';
 import { StrapiMedia } from './mainInterfaces';
@@ -33,8 +33,15 @@ interface IService extends BlockInterface, ApiDataComponent {
     title: TitleComponent[];
 }
 
+interface ITestimonials extends BlockInterface {
+    title: TitleComponent;
+    text: ParagraphComponent;
+    testimonials: TestimonialComponent[];
+}
+
 export {
     IHero,
     IService,
-    IFooterLinks
+    IFooterLinks,
+    ITestimonials
 }

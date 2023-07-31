@@ -27,10 +27,17 @@ interface ApiDataComponent extends ComponentInterface {
     defaultResultsPerPage: number;
 }
 
+interface TestimonialComponent extends ComponentInterface {
+    personName: string;
+    personRole: string;
+    comment: string;
+}
+
 export {
     TitleComponent,
     ParagraphComponent,
     LinkComponent,
     ButtonComponent,
-    ApiDataComponent
+    ApiDataComponent,
+    TestimonialComponent
 }
