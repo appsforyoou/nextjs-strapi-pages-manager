@@ -1,4 +1,4 @@
-interface ComponentInterface {
+export interface ComponentInterface {
     id: number;
 }
 
