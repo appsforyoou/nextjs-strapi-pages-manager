@@ -5,7 +5,7 @@ export async function getLegalNotice() {
         method: 'GET',
     })
 
-    const data = await res.json();
+    const { data } = await res.json();
 
     return data?.attributes?.body;
 }
@@ -15,7 +15,7 @@ export async function getPrivacyNotice() {
         method: 'GET',
     })
 
-    const data = await res.json();
+    const { data } = await res.json();
 
     return data?.attributes?.body;
 }
