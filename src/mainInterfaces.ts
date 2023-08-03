@@ -12,10 +12,7 @@ interface SEO {
     preventIndexing: boolean;
     structuredData?: string;
     metaImage?: {
-        data: {
-            id: number;
-            attributes: StrapiMedia;
-        }
+        data: StrapiMedia;
     };
 }
 
