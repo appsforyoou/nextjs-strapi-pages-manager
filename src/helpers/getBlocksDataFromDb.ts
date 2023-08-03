@@ -13,6 +13,9 @@ export default async function getBlocksDataFromDb(
 
     const res = await fetch(parsedStrapiUrl + apiUrl, {
         method: 'GET',
+        next: {
+            tags: [`page:${slug}`]
+        }
     });
 
     if (!res.ok) {
