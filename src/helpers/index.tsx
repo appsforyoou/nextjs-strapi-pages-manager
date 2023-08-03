@@ -5,6 +5,8 @@ import getMainNavigationLinks from './getMainNavigationLinks';
 import type { Link } from "./getMainNavigationLinks";
 import getFooterData from "./getFooterData";
 
+import { getLegalNotice, getPrivacyNotice } from "./getNotices";
+
 export type { Link };
 
 export {
@@ -12,5 +14,7 @@ export {
     initReactSections,
     SectionManager,
     getMainNavigationLinks,
-    getFooterData
+    getFooterData,
+    getLegalNotice,
+    getPrivacyNotice
 };
