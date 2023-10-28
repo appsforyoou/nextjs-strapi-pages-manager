@@ -1,0 +1,1 @@
+export { buildPageMetadata } from './buildPageMetadata';

@@ -21,7 +21,24 @@
     "skipLibCheck": true,
     "declaration": true,
     "declarationDir": "build/types",
-    "outDir": "build"
+    "outDir": "build",
+    "baseUrl": ".",
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "paths": {
+      "@/*": [
+        "src/*"
+      ],
+      "@v2/*": [
+        "src/v2/*"
+      ],
+      "@v2Types/*": [
+        "src/v2/types/*"
+      ],
+    },
   },
   "include": [
     "src/**/*"
