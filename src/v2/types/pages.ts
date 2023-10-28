@@ -5,15 +5,19 @@ export interface IPageData {
     title: string;
     slug: string;
     seo?: SEO.Interface;
-    page_sections?: PageSection[];
+    page_sections?: IPageSection[];
 }
 
-export interface PageSection {
+export interface IPageSection {
     id: number;
-    htmlId: string;
+    key: string;
     page?: IPageData;
     blocks: unknown[];
-    positionIndex: number;
+}
+
+export interface IBlock {
+    id: number;
+    __component: string;
 }
 
 export namespace SEO {

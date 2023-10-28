@@ -6,14 +6,7 @@ import parseStrapiDataToInterface from "@v2/helpers/parseStrapiData";
 
 export async function getPageData(slug: string, locale: string) {
     const query = buildQsString({
-        populate: {
-            seo: {
-                populate: {
-                    meta: true,
-                    metaImage: true
-                }
-            }
-        },
+        populate: 'deep,10',
         filters: {
             slug: {
                 ...(slug ? {
@@ -28,7 +21,7 @@ export async function getPageData(slug: string, locale: string) {
 
     const apiUrl = `pages?${query}`;
     const response = await fetch(parseStrapiUrl + apiUrl, {
-        next: { tags: ['pageData'] },
+        next: { tags: ['pageData', 'withSections'] },
         
     });
 
