@@ -37,7 +37,7 @@ async function getPageDataForMetadata(slug: string, locale: string) {
 
     const apiUrl = `pages?${query}`;
     const response = await fetch(parseStrapiUrl + apiUrl, {
-        next: { tags: ['pageData', 'metadata'] },
+        next: { tags: ['pageData', 'pageMetadata'] },
         
     });
 

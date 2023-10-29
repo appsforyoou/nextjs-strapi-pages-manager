@@ -9,5 +9,5 @@ declare global {
     }
 }
 
-export * as StrapiTypes from './strapi';
-export * as PagesTypes from './pages';
+export { StrapiMedia, AppUser } from './strapi';
+export { IBlock } from './pages';
