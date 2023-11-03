@@ -10,4 +10,5 @@ declare global {
 }
 
 export { StrapiMedia, AppUser } from './strapi';
+export { LinkI, ButtonI, LinksBoxI } from './defaultBlocks';
 export { IBlock } from './pages';
