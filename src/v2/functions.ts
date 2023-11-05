@@ -137,7 +137,7 @@ export async function getArticles<DATAType>({
     );
 
     const response = await fetch(`${parseStrapiUrl}articles?${query}`, {
-        next: { tags: ['articles'] },
+        next: { tags: ['articles', `page-${page}`] },
     });
 
     const { data, error }: StrapiResponse = await response.json();
