@@ -51,3 +51,12 @@ export namespace SEO {
         content: string;
     }
 }
+
+export interface Article {
+    id: number;
+    title: string;
+    seo?: SEO.Interface;
+    body: string;
+    cover?: StrapiMedia;
+    timesViewed: number;
+}

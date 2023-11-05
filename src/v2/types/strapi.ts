@@ -67,3 +67,10 @@ export interface StrapiResponse<D = any> {
     meta: StrapiMeta;
     error?: StrapiError;
 }
+
+export interface WebsiteSetting {
+    maintenanceMode?: {
+        enabled: boolean;
+        accessSecret: string;
+    }
+}

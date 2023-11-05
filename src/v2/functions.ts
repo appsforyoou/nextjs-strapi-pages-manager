@@ -1,9 +1,10 @@
 import parseStrapiUrl from "./utils/parseStrapiUrl";
 import buildQsString from "@v2/helpers/buildQsString";
-import type { IPageData } from "./types/pages";
-import type { StrapiMedia, StrapiResponse } from "./types/strapi";
+import type { Article, IPageData } from "./types/pages";
+import { WebsiteSetting, type StrapiMedia, type StrapiResponse } from "./types/strapi";
 import parseStrapiDataToInterface from "@v2/helpers/parseStrapiData";
-import { MainNavigation } from './types';
+import { MainNavigation, SocialLinks } from './types';
+import _merge from 'lodash/merge';
 
 export async function getPageData(slug: string, locale: string) {
     const query = buildQsString({
@@ -75,4 +76,114 @@ export async function getWebsiteMainNav() {
     }
 
     return parseStrapiDataToInterface<MainNavigation>(data);
+}
+
+export async function getSocialLinks() {
+    const query = buildQsString({
+        populate: { links: true }
+    })
+    const response = await fetch(`${parseStrapiUrl}social-link?${query}`, {
+        next: { tags: ['socialLink'] },
+    });
+    const { data, error }: StrapiResponse = await response.json();
+    if (error) {
+        throw new Error(error.message);
+    }
+
+    if (!response.ok) {
+        throw new Error(response.statusText);
+    }
+
+    return parseStrapiDataToInterface<SocialLinks>(data);
+}
+
+export async function getArticle(id: number) {
+    const query = buildQsString({
+        populate: { seo: true, cover: true }
+    })
+    const response = await fetch(`${parseStrapiUrl}articles/${id}?${query}`, {
+        next: { tags: ['articles'] },
+    });
+    const { data, error }: StrapiResponse = await response.json();
+    if (error) {
+        throw new Error(error.message);
+    }
+
+    if (!response.ok) {
+        throw new Error(response.statusText);
+    }
+
+    return parseStrapiDataToInterface<Article>(data);
+}
+
+export async function getArticles<DATAType>({
+    perPage = 10, page = 1,
+    withCount = false,
+    extraQuery
+}: { perPage?: number, page?: number, withCount?: boolean, extraQuery?: Record<string, any> }) {
+    const localQuery = {
+        populate: {
+            cover: true,
+        },
+        pagination: {
+            page,
+            pageSize: perPage,
+            withCount
+        }
+    };
+
+    let query = buildQsString(
+        _merge(localQuery, extraQuery)
+    );
+
+    const response = await fetch(`${parseStrapiUrl}articles?${query}`, {
+        next: { tags: ['articles'] },
+    });
+
+    const { data, error }: StrapiResponse = await response.json();
+
+    if (error) {
+        throw new Error(error.message);
+    }
+
+    if (!response.ok) {
+        throw new Error(response.statusText);
+    }
+
+    return parseStrapiDataToInterface<DATAType[]>(data);
+}
+
+export async function getWebsiteSettings() {
+    const query = buildQsString({ populate: 'deep,10' });
+    const res = await fetch(`${parseStrapiUrl}website-setting?${query}`, {
+        headers: {
+            'Authorization': `Bearer ${process.env.STRAPI_TOKEN}`
+        }
+    });
+
+    const { data, error }: StrapiResponse = await res.json();
+
+    if (error) {
+        throw new Error(error.message);
+    }
+
+    if (!res.ok) {
+        throw new Error(res.statusText);
+    }
+
+    return parseStrapiDataToInterface<WebsiteSetting>(data);
+}
+
+export async function isWebsiteInMaintenance(secretFromCookie: string) {
+    const { maintenanceMode } = await getWebsiteSettings();
+    if (typeof maintenanceMode === 'undefined') {
+        throw new Error('Maintenance mode is not defined');
+    }
+
+    const { enabled, accessSecret } = maintenanceMode;
+
+    return {
+        isMaintenance: enabled,
+        hasAccess: secretFromCookie === accessSecret
+    };
 }
