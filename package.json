@@ -10,6 +10,9 @@
   "types": "build/types/index.d.ts",
   "author": "Divergent",
   "license": "MIT",
+  "files": [
+    "build"
+  ],
   "dependencies": {
     "lodash": "^4.17.21",
     "next": "^14.0.0",
