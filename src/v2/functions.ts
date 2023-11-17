@@ -102,7 +102,7 @@ export async function getArticle(id: number) {
         populate: { seo: true, cover: true }
     })
     const response = await fetch(`${parseStrapiUrl}articles/${id}?${query}`, {
-        next: { tags: ['articles'] },
+        next: { tags: ['webArticles'] },
     });
     const { data, error }: StrapiResponse = await response.json();
     if (error) {
