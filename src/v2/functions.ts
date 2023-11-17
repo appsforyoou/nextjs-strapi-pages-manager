@@ -80,7 +80,7 @@ export async function getWebsiteMainNav() {
 
 export async function getSocialLinks() {
     const query = buildQsString({
-        populate: { links: true }
+        populate: 'deep,3'
     })
     const response = await fetch(`${parseStrapiUrl}social-link?${query}`, {
         next: { tags: ['socialLink'] },
