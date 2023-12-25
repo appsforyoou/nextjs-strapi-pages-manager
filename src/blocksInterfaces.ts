@@ -29,8 +29,9 @@ interface IFooterLinks extends BlockInterface {
     }[]
 }
 
-interface IService extends BlockInterface, ApiDataComponent {
+interface IService extends BlockInterface {
     title: TitleComponent[];
+    data: ApiDataComponent;
 }
 
 interface ITestimonials extends BlockInterface {
