@@ -15,9 +15,7 @@ export interface BlockInterface {
 interface IHero extends BlockInterface {
     title: TitleComponent;
     text: ParagraphComponent;
-    media: {
-        data: StrapiMedia[];
-    };
+    media: StrapiMedia[];
     buttons: ButtonComponent[];
     theme: number;
 }
