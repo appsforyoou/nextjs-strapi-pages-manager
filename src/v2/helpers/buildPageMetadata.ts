@@ -6,6 +6,7 @@ import buildQsString from "./buildQsString";
 import { StrapiResponse } from "../types/strapi";
 import parseStrapiUrl from "../utils/parseStrapiUrl";
 import parseStrapiDataToInterface from "./parseStrapiData";
+import { buildMediaPath } from '../utils/buildMediaPath';
 
 async function getPageDataForMetadata(slug: string, locale: string) {
     const query = buildQsString({
@@ -72,7 +73,7 @@ export default async function buildPageMetadata(pageSlug: string, pageLocale: st
             ...((opengraph as SEO.OpenGraph).images && {
                 images: (opengraph as SEO.OpenGraph)
                     .images?.map(image => ({
-                        url: image.url,
+                        url: buildMediaPath(image.url),
                         width: image.width,
                         height: image.height,
                         alt: image.alternativeText,
