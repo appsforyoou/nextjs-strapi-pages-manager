@@ -54,7 +54,7 @@ async function getPageDataForMetadata(slug: string, locale: string) {
     return parseStrapiDataToInterface<IPageData[]>(data)[0];
 }
 
-export async function buildPageMetadata(pageSlug: string, pageLocale: string): Promise<Metadata> {
+export default async function buildPageMetadata(pageSlug: string, pageLocale: string): Promise<Metadata> {
     const pageData = await getPageDataForMetadata(pageSlug, pageLocale);
     if (!pageData) throw new Error(`No page data found for slug ${pageSlug} and locale ${pageLocale}`);
 

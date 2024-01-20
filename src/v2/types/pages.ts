@@ -11,8 +11,9 @@ export interface IPageData {
 export interface IPageSection {
     id: number;
     key: string;
+    positionIndex: number;
     page?: IPageData;
-    blocks: unknown[];
+    blocks: IBlock[];
 }
 
 export interface IBlock {

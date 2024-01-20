@@ -1,4 +1,4 @@
-export * as helpers from './helpers';
+export * from './helpers';
 export * as types from './types';
 export {
     getPageData,
