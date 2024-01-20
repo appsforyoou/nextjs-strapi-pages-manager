@@ -116,7 +116,7 @@ export async function getArticle(id: number) {
     return parseStrapiDataToInterface<Article>(data);
 }
 
-export async function getArticles<DATAType>({
+export async function getArticles({
     perPage = 10, page = 1,
     withCount = false,
     extraQuery
@@ -151,7 +151,7 @@ export async function getArticles<DATAType>({
         throw new Error(response.statusText);
     }
 
-    return parseStrapiDataToInterface<DATAType[]>(data);
+    return parseStrapiDataToInterface<Article[]>(data);
 }
 
 export async function getWebsiteSettings() {
