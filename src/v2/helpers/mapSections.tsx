@@ -1,5 +1,6 @@
 import React from 'react';
 import { getPageData } from '../functions';
+import { IPageData } from '../types/pages';
 
 type Props = {
     getSection: (id: string) => React.ComponentType<{ children: React.ReactNode }> | null,
@@ -8,7 +9,12 @@ type Props = {
     lang: string
 }
 
-export default async function mapSections({ getComponent, getSection, lang, pageSlug }: Props) {
+type RType = {
+    mappedSections: React.ReactNode[],
+    pageData: IPageData
+}
+
+export default async function mapSections({ getComponent, getSection, lang, pageSlug }: Props): Promise<RType> {
     const pageData = await getPageData(pageSlug, lang);
     const dbSections = pageData?.page_sections;
     if (!dbSections) throw new Error(`No sections found for ${pageSlug} in ${lang}`);
@@ -31,5 +37,8 @@ export default async function mapSections({ getComponent, getSection, lang, page
         })
     }
 
-    return sectionsByPositionIndex.sort((a, b) => a.index - b.index).map(section => section.jsx);
+    return {
+        mappedSections: sectionsByPositionIndex.sort((a, b) => a.index - b.index).map(section => section.jsx),
+        pageData
+    }
 }
