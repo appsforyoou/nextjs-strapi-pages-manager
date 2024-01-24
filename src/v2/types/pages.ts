@@ -61,3 +61,11 @@ export interface Article {
     cover?: StrapiMedia;
     timesViewed: number;
 }
+
+export interface IPrivacyNotice {
+    body: string;
+}
+
+export interface ILegalNotice {
+    body: string;
+}

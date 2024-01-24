@@ -8,6 +8,8 @@ export {
     getArticles,
     getSocialLinks,
     getWebsiteSettings,
-    isWebsiteInMaintenance
+    isWebsiteInMaintenance,
+    getLegalNotice,
+    getPrivacyNotice
 } from './functions';
 export { buildMediaPath } from './utils/buildMediaPath';
