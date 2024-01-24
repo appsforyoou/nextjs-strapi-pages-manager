@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "description": "Handle the pages and blocks for appsforyou - strapi basic website CMS.",
   "scripts": {
-    "preinstall": "npx only-allow yarn",
+    "preinstall": "npx only-allow npm",
     "build": "rollup -c",
     "prepare": "yarn build"
   },
