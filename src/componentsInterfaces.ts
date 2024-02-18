@@ -18,10 +18,6 @@ interface LinkComponent extends ComponentInterface {
     target: string;
 }
 
-interface ButtonComponent extends ComponentInterface {
-    link: LinkComponent;
-}
-
 interface ApiDataComponent extends ComponentInterface {
     path: string;
     defaultResultsPerPage: number;
@@ -37,7 +33,6 @@ export {
     TitleComponent,
     ParagraphComponent,
     LinkComponent,
-    ButtonComponent,
     ApiDataComponent,
     TestimonialComponent
 }
