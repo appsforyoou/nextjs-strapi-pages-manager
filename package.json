@@ -5,7 +5,8 @@
   "scripts": {
     "preinstall": "npx only-allow yarn",
     "build": "rollup -c",
-    "prepare": "yarn build"
+    "prepare": "yarn build",
+    "prepack": "yarn build"
   },
   "main": "build/bundle",
   "types": "build/types/index.d.ts",
