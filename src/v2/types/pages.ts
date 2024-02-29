@@ -1,3 +1,4 @@
+import { PageSearchData } from './next';
 import { StrapiMedia } from "./strapi";
 
 export interface IPageData {
@@ -15,11 +16,13 @@ export interface IPageSection {
     positionIndex: number;
     page?: IPageData;
     blocks: IBlock[];
+    searchData?: PageSearchData
 }
 
 export interface IBlock {
     id: number;
     __component: string;
+    searchData?: PageSearchData
 }
 
 export namespace SEO {
