@@ -13,3 +13,4 @@ export {
     getPrivacyNotice
 } from './functions';
 export { buildMediaPath } from './utils/buildMediaPath';
+export { default as requestData } from './utils/requestData';
