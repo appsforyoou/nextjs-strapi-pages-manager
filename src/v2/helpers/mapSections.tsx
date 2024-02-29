@@ -22,6 +22,7 @@ export default async function mapSections({ getComponent, getSection, lang, page
     const sectionsByPositionIndex: { index: number, jsx: React.ReactNode }[] = []
 
     for (const sectionData of dbSections) {
+        sectionData.sectionKey = sectionData.key;
         const Section = getSection(sectionData.key);
         if (!Section) throw new Error(`Section component not found for ${sectionData.key}`);
 
